@@ -27,6 +27,9 @@ public class Employee {
     }
 
     public void setFirstName(String firstName) {
+        if(firstName == null || firstName.isEmpty()) {
+            throw new IllegalArgumentException("first name is required");
+        }
         this.firstName = firstName;
     }
 
@@ -35,6 +38,9 @@ public class Employee {
     }
 
     public void setLastName(String lastName) {
+        if(lastName == null || lastName.isEmpty()) {
+            throw new IllegalArgumentException("last name is required");
+        }
         this.lastName = lastName;
     }
 
@@ -43,6 +49,9 @@ public class Employee {
     }
 
     public void setSsn(String ssn) {
+        if(ssn == null) {
+            throw new IllegalArgumentException("orientation date is required");
+        }
         this.ssn = ssn;
     }
 
@@ -83,6 +92,8 @@ public class Employee {
     }
 
     public void setCubeId(String cubeId) {
+        if(cubeId == null) {
+            throw new IllegalArgumentException("cube id is required");}
         this.cubeId = cubeId;
     }
 
@@ -91,6 +102,8 @@ public class Employee {
     }
 
     public void setOrientationDate(Date orientationDate) {
+        if(orientationDate == null) {
+            throw new IllegalArgumentException("orientation date is required");}
         this.orientationDate = orientationDate;
     }
 
