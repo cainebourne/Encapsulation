@@ -99,7 +99,7 @@ public class Employee {
     // would only do this once, upon being hired. If that were true, this
     // method should not be public. It should only be available to this class
     // and should only be called as part of the larger task of:
-    // doFirtTimeOrientation()
+    // doFirstTimeOrientation()
     private void meetDepartmentStaff() {
         metDeptStaff = true;
         System.out.println(firstName + " " + lastName + " met with Dept. Staff on "
@@ -146,7 +146,7 @@ public class Employee {
 
     public void setLastName(String lastName) {
         if(lastName == null || lastName.isEmpty()) {
-            System.out.println("last name is required");
+            throw new IllegalArgumentException("last name is required");
         }
         this.lastName = lastName;
     }
@@ -157,7 +157,7 @@ public class Employee {
 
     public void setSsn(String ssn) {
         if(ssn == null || ssn.length() < 9 || ssn.length() > 11) {
-            System.out.println("ssn is required and must be "
+             throw new IllegalArgumentException("ssn is required and must be "
                     + "between 9 and 11 characters (if hyphens are used)");
         }
         this.ssn = ssn;
@@ -203,7 +203,7 @@ public class Employee {
     
     public void setCubeId(String cubeId) {
         if(cubeId == null || cubeId.isEmpty()) {
-            System.out.println("cube id is required");
+             throw new IllegalArgumentException("cube id is required");
         }
         this.cubeId = cubeId;
     }
@@ -214,7 +214,7 @@ public class Employee {
 
     public void setOrientationDate(Date orientationDate) {
         if(orientationDate == null) {
-            System.out.println("orientationDate is required");
+             throw new IllegalArgumentException("orientationDate is required");
         }
         this.orientationDate = orientationDate;
     }

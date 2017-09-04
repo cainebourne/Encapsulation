@@ -27,7 +27,7 @@ public class Employee {
     }
 
     public void setFirstName(String firstName) {
-        if(firstName == null || firstName.isEmpty()) {
+        if(firstName == null) {
             throw new IllegalArgumentException("first name is required");
         }
         this.firstName = firstName;
@@ -38,7 +38,7 @@ public class Employee {
     }
 
     public void setLastName(String lastName) {
-        if(lastName == null || lastName.isEmpty()) {
+        if(lastName == null ) {
             throw new IllegalArgumentException("last name is required");
         }
         this.lastName = lastName;
