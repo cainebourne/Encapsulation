@@ -93,7 +93,8 @@ public class Employee {
 
     public void setCubeId(String cubeId) {
         if(cubeId == null) {
-            throw new IllegalArgumentException("cube id is required");}
+            throw new IllegalArgumentException("cube id is required");
+        }
         this.cubeId = cubeId;
     }
 
@@ -103,7 +104,8 @@ public class Employee {
 
     public void setOrientationDate(Date orientationDate) {
         if(orientationDate == null) {
-            throw new IllegalArgumentException("orientation date is required");}
+            throw new IllegalArgumentException("orientation date is required");
+        }
         this.orientationDate = orientationDate;
     }
 

@@ -35,36 +35,43 @@ public class Employee {
         this.lastName = lastName;
         this.ssn = ssn;
     }
+    
+    private String getFormattedDate() {
+        SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
+        return sdf.format(orientationDate);
+    }
+    
+    public void executeFirstTimeOrientationInOrder(String cubeId){
+        orientationDate = new Date();
+        meetWithHrForBenefitAndSalryInfo();
+        meetDepartmentStaff();
+        reviewDeptPolicies();
+        moveIntoCubicle(cubeId);
+    }
 
     // Assume this must be performed first, and assume that an employee
     // would only do this once, upon being hired.
     private void meetWithHrForBenefitAndSalryInfo() {
         metWithHr = true;
-        SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
-        String fmtDate = sdf.format(orientationDate);        
-        System.out.println(firstName + " " + lastName + " met with Hr on "
-            + fmtDate);
+              System.out.println(firstName + " " + lastName + " met with Hr on "
+            + getFormattedDate());
     }
 
     // Assume this must be performed second, and assume that an employee
     // would only do this once, upon being hired.:
     private void meetDepartmentStaff() {
-        metDeptStaff = true;
-        SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
-        String fmtDate = sdf.format(orientationDate);        
+        metDeptStaff = true;        
         System.out.println(firstName + " " + lastName + " met with Dept. Staff on "
-            + fmtDate);
+            + getFormattedDate());
     }
 
     // Assume this must be performed third. And assume that because department
     // policies may change that this method may need to be called 
     // independently from other classes.
     public void reviewDeptPolicies() {
-        reviewedDeptPolicies = true;
-        SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
-        String fmtDate = sdf.format(orientationDate);        
+        reviewedDeptPolicies = true;        
         System.out.println(firstName + " " + lastName + " reviewed Dept policies on "
-            + fmtDate);
+            + getFormattedDate());
     }
 
     // Assume this must be performed 4th. And assume that because employees
@@ -72,11 +79,9 @@ public class Employee {
     // independently from other classes.
     public void moveIntoCubicle(String cubeId) {
         this.cubeId = cubeId;
-        this.movedIn = true;
-        SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
-        String fmtDate = sdf.format(orientationDate);        
+        this.movedIn = true;        
         System.out.println(firstName + " " + lastName + " moved into cubicle "
-                + cubeId + " on " + fmtDate);
+                + cubeId + " on " + getFormattedDate());
     }
 
     public String getFirstName() {
@@ -87,6 +92,9 @@ public class Employee {
     // allowed through validation.
     
     public void setFirstName(String firstName) {
+         if(firstName == null || firstName.isEmpty()) {
+            throw new IllegalArgumentException("first name is required");
+        }
        this.firstName = firstName;
     }
 
@@ -95,6 +103,9 @@ public class Employee {
     }
 
     public void setLastName(String lastName) {
+        if(lastName == null || lastName.isEmpty()) {
+            throw new IllegalArgumentException("last name is required");
+        }
        this.lastName = lastName;
     }
 
@@ -103,6 +114,9 @@ public class Employee {
     }
 
     public void setSsn(String ssn) {
+        if(ssn == null) {
+            throw new IllegalArgumentException("orientation date is required");
+        }
         this.ssn = ssn;
     }
 
@@ -145,6 +159,9 @@ public class Employee {
 
     
     public void setCubeId(String cubeId) {
+        if(cubeId == null) {
+            throw new IllegalArgumentException("cube id is required");
+        }
         this.cubeId = cubeId;
     }
 
@@ -153,5 +170,8 @@ public class Employee {
     }
 
     public void setOrientationDate(Date orientationDate) {
+         if(orientationDate == null) {
+            throw new IllegalArgumentException("orientation date is required");
+        }
         this.orientationDate = orientationDate;
     }}
